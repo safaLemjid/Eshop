@@ -43,7 +43,6 @@ import tn.rnu.isi.service.ProduitService;
 
 
 @Controller 
-@CrossOrigin
 @RequestMapping("/") //make all URL's through this controller relative to /index
 public class IndexController {
 	
@@ -62,7 +61,7 @@ public class IndexController {
 
 	
 	
-	
+	@CrossOrigin
 	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
 	 
@@ -78,6 +77,7 @@ public class IndexController {
 	 ***************************************/	
 	 
 	// show new Produit form
+	    @CrossOrigin
 		@RequestMapping(value = "/produit/new", method = RequestMethod.GET)
 		public String showNewProduit(Model model) {
 
@@ -95,6 +95,7 @@ public class IndexController {
 	
 				
 	 // show list of All Produit
+		@CrossOrigin
 		@RequestMapping({"/produit/listAll","produitList"})
 		protected ModelAndView lisAllProduits(HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
@@ -118,6 +119,7 @@ public class IndexController {
 		 ***************************************/	
 		
 		// show new Categorie form
+		        @CrossOrigin
 				@RequestMapping(value = "/categorie/new", method = RequestMethod.GET)
 				public String showNewCategorie(Model model) {
 
@@ -135,6 +137,7 @@ public class IndexController {
 			
 						
 			 // show list of All Categorie
+		    	@CrossOrigin
 				@RequestMapping({"/categorie/listAll","categorieList"})
 				protected ModelAndView lisAllCategories(HttpServletRequest request,
 						HttpServletResponse response) throws Exception {
