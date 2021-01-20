@@ -152,7 +152,44 @@ public class IndexController {
 					return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
 				} 
 				
+				/**************************************
+				 * Gestion Commande
+				 * **Nouvelle : /Commande/new
+			     * **Rechercher : /Commande/search
+			     * **Liser Tous : /Commande/listAll
+				 ***************************************/	
 				
+				// show new Categorie form
+						@RequestMapping(value = "/commande/new", method = RequestMethod.GET)
+						public String showNewCommande(Model model) {
+
+							logger.debug(":::showNewCommande:::");
+
+							Commande commande = new Commande();
+							
+							model.addAttribute("commandeForm", commande);
+
+					 
+							 return "/commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newCommande.jsp)
+
+						}
+						
+					
+								
+					 // show list of All Categorie
+						@RequestMapping({"/commande/listAll","commandeList"})
+						protected ModelAndView lisAllCommandes(HttpServletRequest request,
+								HttpServletResponse response) throws Exception {
+							/*
+							 * Lancement du Service et récupération données en base
+							 */
+							List<Commande> listeCommandes = commandeService.getAll();
+
+							/*
+							 * Envoi Vue + Modèle MVC pour Affichage données vue
+							 */
+							return new ModelAndView("/commande/showAllCommandes", "commandes", listeCommandes);
+						} 		
 				
 				
 }
