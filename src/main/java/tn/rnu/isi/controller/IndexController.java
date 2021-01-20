@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,21 +35,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import tn.rnu.isi.model.Categorie;
-import tn.rnu.isi.model.Client;
 import tn.rnu.isi.model.Commande;
 import tn.rnu.isi.model.Produit;
 import tn.rnu.isi.service.CategorieService;
-import tn.rnu.isi.service.ClientService;
 import tn.rnu.isi.service.CommandeService;
 import tn.rnu.isi.service.ProduitService;
 
 
- 
-
-
- 
- 
 @Controller 
+@CrossOrigin
 @RequestMapping("/") //make all URL's through this controller relative to /index
 public class IndexController {
 	
@@ -64,8 +59,7 @@ public class IndexController {
 	CommandeService commandeService;
 	
 	
-	@Autowired
-	ClientService clientService;
+
 	
 	
 	
