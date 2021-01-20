@@ -107,7 +107,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
+			return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
 		} 
 		
 		
