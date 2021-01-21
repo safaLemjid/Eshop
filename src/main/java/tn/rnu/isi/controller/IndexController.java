@@ -27,6 +27,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,7 +78,7 @@ public class IndexController {
 	 ***************************************/	
 	 
 	// show new Produit form
-	    @CrossOrigin
+	        @GetMapping("/addUpdateProduit")
 		@RequestMapping(value = "/produit/new", method = RequestMethod.GET)
 		public String showNewProduit(Model model) {
 
