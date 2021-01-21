@@ -43,7 +43,8 @@ import tn.rnu.isi.service.CommandeService;
 import tn.rnu.isi.service.ProduitService;
 
 
-@Controller 
+@Controller
+@CrossOrigin
 @RequestMapping("/") //make all URL's through this controller relative to /index
 public class IndexController {
 	
@@ -78,8 +79,8 @@ public class IndexController {
 	 ***************************************/	
 	 
 	// show new Produit form
-	        @GetMapping("/addUpdateProduit")
-		@RequestMapping(value = "/produit/new", method = RequestMethod.GET)
+
+		@RequestMapping(value="/produit/new", method=RequestMethod.GET)
 		public String showNewProduit(Model model) {
 
 			logger.debug(":::showNewProduit:::");
@@ -120,8 +121,8 @@ public class IndexController {
 		 ***************************************/	
 		
 		// show new Categorie form
-		        @CrossOrigin
-				@RequestMapping(value = "/categorie/new", method = RequestMethod.GET)
+		      
+				@RequestMapping(value="/categorie/new", method=RequestMethod.GET)
 				public String showNewCategorie(Model model) {
 
 					logger.debug(":::showNewCategorie:::");
@@ -138,7 +139,7 @@ public class IndexController {
 			
 						
 			 // show list of All Categorie
-		    	@CrossOrigin
+		    
 				@RequestMapping({"/categorie/listAll","categorieList"})
 				protected ModelAndView lisAllCategories(HttpServletRequest request,
 						HttpServletResponse response) throws Exception {
@@ -161,7 +162,7 @@ public class IndexController {
 				 ***************************************/	
 				
 				// show new Categorie form
-						@RequestMapping(value = "/commande/new", method = RequestMethod.GET)
+						@RequestMapping(value="/commande/new", method=RequestMethod.GET)
 						public String showNewCommande(Model model) {
 
 							logger.debug(":::showNewCommande:::");
