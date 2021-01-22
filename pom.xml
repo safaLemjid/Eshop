@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>tn.rnu.isi.eshop_v</groupId>
-	<artifactId>Eshop_v</artifactId>
+	<groupId>tn.rnu.isi.eshop</groupId>
+	<artifactId>Eshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
-	<name>eshop_v</name>
+	<name>eshop</name>
 	<description>Mon Projet Spring Boot Data Thymleaf</description>
 
 	<parent>
