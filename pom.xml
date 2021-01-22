@@ -3,14 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	
-	<groupId>tn.rnu.isi.demo</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>tn.rnu.isi.eshop_v</groupId>
+	<artifactId>Eshop_v</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<packaging>war</packaging>
+	
+	<name>eshop_v</name>
+	<description>Mon Projet Spring Boot Data Thymleaf</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -21,21 +20,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding> UTF-8 </project.reporting.outputEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<start-class>tn.rnu.isi.Application</start-class>
 		<java.version>1.8</java.version>
 	</properties>
 
-
 	<dependencies>
-	<dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-thymeleaf</artifactId>
-</dependency>
-	     <dependency>
-			<groupId>net.sourceforge.nekohtml</groupId>
-			<artifactId>nekohtml</artifactId>
-			<version>1.9.22</version>                                 
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -61,16 +51,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		 </dependency>
-		<dependency>
-    		<groupId>com.h2database</groupId>
-    		<artifactId>h2</artifactId>
-    		<scope>runtime</scope>
-		</dependency>
+
 		<!-- template Thymeleaf-->
 		 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-thymeleaf</artifactId>
-</dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		
 		<!-- Tomcat embedded container-->
 		<dependency>
@@ -85,11 +71,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-<dependency>
-<groupId>net.sourceforge.nekohtml</groupId>
-<artifactId>nekohtml</artifactId>
-<version>1.9.22</version>                                 
-</dependency>
+
 		<!-- Need this to compile JSP -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>

@@ -63,7 +63,6 @@ public class IndexController {
 
 	
 	
-	@CrossOrigin
 	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
 	 
@@ -109,7 +108,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
+			return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
 		} 
 		
 		
