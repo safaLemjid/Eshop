@@ -26,7 +26,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,15 +34,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import tn.rnu.isi.model.Categorie;
+import tn.rnu.isi.model.Client;
 import tn.rnu.isi.model.Commande;
 import tn.rnu.isi.model.Produit;
 import tn.rnu.isi.service.CategorieService;
+import tn.rnu.isi.service.ClientService;
 import tn.rnu.isi.service.CommandeService;
 import tn.rnu.isi.service.ProduitService;
 
 
+ 
+
+
+ 
+ 
 @Controller 
-@CrossOrigin
 @RequestMapping("/") //make all URL's through this controller relative to /index
 public class IndexController {
 	
@@ -59,7 +64,8 @@ public class IndexController {
 	CommandeService commandeService;
 	
 	
-
+	@Autowired
+	ClientService clientService;
 	
 	
 	
@@ -149,6 +155,8 @@ public class IndexController {
 					return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
 				} 
 				
+				
+				
 				/**************************************
 				 * Gestion Commande
 				 * **Nouvelle : /Commande/new
@@ -186,7 +194,48 @@ public class IndexController {
 							 * Envoi Vue + Modèle MVC pour Affichage données vue
 							 */
 							return new ModelAndView("/commande/showAllCommandes", "commandes", listeCommandes);
-						} 		
-				
+						} 
+						
+						
+						
+						
+						/**************************************
+						 * Gestion Client
+						 * **Nouvelle : /Client/new
+					     * **Rechercher : /Client/search
+					     * **Liser Tous : /Client/listAll
+						 ***************************************/	
+						
+						// show new Client form
+								@RequestMapping(value = "/client/new", method = RequestMethod.GET)
+								public String showNewClient(Model model) {
+
+									logger.debug(":::showNewClient:::");
+
+									Client client = new Client();
+									
+									model.addAttribute("clientForm", client);
+
+							 
+									 return "/client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newClient.jsp)
+
+								}
+								
+							
+										
+							 // show list of All Client
+								@RequestMapping({"/client/listAll","clientList"})
+								protected ModelAndView lisAllClients(HttpServletRequest request,
+										HttpServletResponse response) throws Exception {
+									/*
+									 * Lancement du Service et récupération données en base
+									 */
+									List<Client> listeClients = clientService.getAll();
+
+									/*
+									 * Envoi Vue + Modèle MVC pour Affichage données vue
+									 */
+									return new ModelAndView("/client/showAllClients", "clients", listeClients);
+								} 
 				
 }
