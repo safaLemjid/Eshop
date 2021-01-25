@@ -86,7 +86,7 @@ public class CategorieController {
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
-        return "redirect:categorie/listAll";
+        return "redirect:/categorie/listAll";
     }
     
     @RequestMapping("/categorie/update/{id}")
@@ -103,7 +103,7 @@ public class CategorieController {
         redirectAttributes.addFlashAttribute("typeAlert", "delete");
     	redirectAttributes.addFlashAttribute("msgAlert", "Categorie dont ID : "+id+" a été supprimé.");
     	
-        return "redirect:categorie/listAll";
+        return "redirect:/categorie/listAll";
     }
     
     @RequestMapping(value = "/categorie/clear")
@@ -113,7 +113,7 @@ public class CategorieController {
 	    	categorieService.deleteCategorie(categorie.getIdCateg());
 		}
     	
-        return "redirect:categorie/listAll";
+        return "redirect:/categorie/listAll";
     }
     
     
