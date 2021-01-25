@@ -84,7 +84,7 @@ public class IndexController {
 	 ***************************************/	
 	 
 	// show new Produit form
-		@RequestMapping(value = "/produit/new", method = RequestMethod.GET)
+		@RequestMapping(value = "produit/new", method = RequestMethod.GET)
 		public String showNewProduit(Model model) {
 
 			logger.debug(":::showNewProduit:::");
@@ -94,14 +94,14 @@ public class IndexController {
 			model.addAttribute("produitForm", produit);
 
 	 
-			 return "/produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			 return "produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 
 		}
 		
 	
 				
 	 // show list of All Produit
-		@RequestMapping({"/produit/listAll","produitList"})
+		@RequestMapping({"produit/listAll","produitList"})
 		protected ModelAndView lisAllProduits(HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
 			/*
@@ -112,7 +112,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
+			return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
 		} 
 		
 		
@@ -124,7 +124,7 @@ public class IndexController {
 		 ***************************************/	
 		
 		// show new Categorie form
-				@RequestMapping(value = "/categorie/new", method = RequestMethod.GET)
+				@RequestMapping(value = "categorie/new", method = RequestMethod.GET)
 				public String showNewCategorie(Model model) {
 
 					logger.debug(":::showNewCategorie:::");
@@ -141,7 +141,7 @@ public class IndexController {
 			
 						
 			 // show list of All Categorie
-				@RequestMapping({"/categorie/listAll","categorieList"})
+				@RequestMapping({"categorie/listAll","categorieList"})
 				protected ModelAndView lisAllCategories(HttpServletRequest request,
 						HttpServletResponse response) throws Exception {
 					/*
@@ -152,7 +152,7 @@ public class IndexController {
 					/*
 					 * Envoi Vue + Modèle MVC pour Affichage données vue
 					 */
-					return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
+					return new ModelAndView("categorie/showAllCategories", "categories", listeCategories);
 				} 
 				
 				
@@ -165,7 +165,7 @@ public class IndexController {
 				 ***************************************/	
 				
 				// show new Categorie form
-						@RequestMapping(value = "/commande/new", method = RequestMethod.GET)
+						@RequestMapping(value = "commande/new", method = RequestMethod.GET)
 						public String showNewCommande(Model model) {
 
 							logger.debug(":::showNewCommande:::");
@@ -175,14 +175,14 @@ public class IndexController {
 							model.addAttribute("commandeForm", commande);
 
 					 
-							 return "/commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newCommande.jsp)
+							 return "commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newCommande.jsp)
 
 						}
 						
 					
 								
 					 // show list of All Categorie
-						@RequestMapping({"/commande/listAll","commandeList"})
+						@RequestMapping({"commande/listAll","commandeList"})
 						protected ModelAndView lisAllCommandes(HttpServletRequest request,
 								HttpServletResponse response) throws Exception {
 							/*
@@ -193,7 +193,7 @@ public class IndexController {
 							/*
 							 * Envoi Vue + Modèle MVC pour Affichage données vue
 							 */
-							return new ModelAndView("/commande/showAllCommandes", "commandes", listeCommandes);
+							return new ModelAndView("commande/showAllCommandes", "commandes", listeCommandes);
 						} 
 						
 						
@@ -207,7 +207,7 @@ public class IndexController {
 						 ***************************************/	
 						
 						// show new Client form
-								@RequestMapping(value = "/client/new", method = RequestMethod.GET)
+								@RequestMapping(value = "client/new", method = RequestMethod.GET)
 								public String showNewClient(Model model) {
 
 									logger.debug(":::showNewClient:::");
@@ -217,14 +217,14 @@ public class IndexController {
 									model.addAttribute("clientForm", client);
 
 							 
-									 return "/client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newClient.jsp)
+									 return "client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newClient.jsp)
 
 								}
 								
 							
 										
 							 // show list of All Client
-								@RequestMapping({"/client/listAll","clientList"})
+								@RequestMapping({"client/listAll","clientList"})
 								protected ModelAndView lisAllClients(HttpServletRequest request,
 										HttpServletResponse response) throws Exception {
 									/*
@@ -235,7 +235,7 @@ public class IndexController {
 									/*
 									 * Envoi Vue + Modèle MVC pour Affichage données vue
 									 */
-									return new ModelAndView("/client/showAllClients", "clients", listeClients);
+									return new ModelAndView("client/showAllClients", "clients", listeClients);
 								} 
 				
 }
