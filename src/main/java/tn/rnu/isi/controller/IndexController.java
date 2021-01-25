@@ -134,7 +134,7 @@ public class IndexController {
 					model.addAttribute("categorieForm", categorie);
 
 			 
-					 return "/categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newCategorie.jsp)
+					 return "categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newCategorie.jsp)
 
 				}
 				
