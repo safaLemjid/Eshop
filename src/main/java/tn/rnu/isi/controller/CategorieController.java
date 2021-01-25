@@ -29,7 +29,7 @@ public class CategorieController {
 	
 	
 	
-	@RequestMapping(value = "categorie/listAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/categorie/listAll", method = RequestMethod.GET)
 	protected ModelAndView showAllCategories() throws Exception {
 		/*
 		 * Lancement du Service et recupeation donnees en base
@@ -48,7 +48,7 @@ public class CategorieController {
         return "categorie/showAllCategories";         
     }
 
-    @RequestMapping(value = "categorie/get/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/categorie/get/{id}" , method = RequestMethod.GET)
     public String get(@PathVariable Long id, Model model) throws Exception {
         model.addAttribute("categorieToShow", categorieService.getByIdCategorie(id));
         return "categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
@@ -56,7 +56,7 @@ public class CategorieController {
     
     
     
-    @RequestMapping(value = "categorie/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/categorie/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("categorieForm") Categorie categorie, Model model, final RedirectAttributes redirectAttributes) throws Exception {
     	try {
 			
@@ -89,14 +89,14 @@ public class CategorieController {
         return "redirect:categorie/listAll";
     }
     
-    @RequestMapping("categorie/update/{id}")
+    @RequestMapping("/categorie/update/{id}")
     public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
         Categorie categorie = categorieService.getByIdCategorie(id);
         model.addAttribute("categorieForm", categorie);
         return "categorie/addUpdateCategorie";
     }
     
-    @RequestMapping(value = "categorie/delete/{id}")
+    @RequestMapping(value = "/categorie/delete/{id}")
     public String delete(@PathVariable Long id, final RedirectAttributes redirectAttributes) throws Exception {
         categorieService.deleteCategorie(id);
         
@@ -106,7 +106,7 @@ public class CategorieController {
         return "redirect:categorie/listAll";
     }
     
-    @RequestMapping(value = "categorie/clear")
+    @RequestMapping(value = "/categorie/clear")
     public String deleteAll() throws Exception {
     	List<Categorie> listeCategories = categorieService.getAll();
     	for (Categorie categorie : listeCategories) {	
