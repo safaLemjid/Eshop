@@ -29,7 +29,7 @@ public class CategorieController {
 	
 	
 	
-	@RequestMapping(value = "/categorie/listAll", method = RequestMethod.GET)
+	@RequestMapping(value = "categorie/listAll", method = RequestMethod.GET)
 	protected ModelAndView showAllCategories() throws Exception {
 		/*
 		 * Lancement du Service et recupeation donnees en base
@@ -39,24 +39,24 @@ public class CategorieController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
+		return new ModelAndView("categorie/showAllCategories", "categories", listeCategories);
 	}
 	
-	@RequestMapping(value = "/categorie/list", method = RequestMethod.GET)
+	@RequestMapping(value = "categorie/list", method = RequestMethod.GET)
     public String list(Model model) throws Exception {
         model.addAttribute("categories", categorieService.getAll());
-        return "/categorie/showAllCategories";         
+        return "categorie/showAllCategories";         
     }
 
-    @RequestMapping(value = "/categorie/get/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "categorie/get/{id}" , method = RequestMethod.GET)
     public String get(@PathVariable Long id, Model model) throws Exception {
         model.addAttribute("categorieToShow", categorieService.getByIdCategorie(id));
-        return "/categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
+        return "categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
     }
     
     
     
-    @RequestMapping(value = "/categorie/save", method = RequestMethod.POST)
+    @RequestMapping(value = "categorie/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("categorieForm") Categorie categorie, Model model, final RedirectAttributes redirectAttributes) throws Exception {
     	try {
 			
@@ -86,34 +86,34 @@ public class CategorieController {
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
-        return "redirect:/categorie/listAll";
+        return "redirect:categorie/listAll";
     }
     
-    @RequestMapping("/categorie/update/{id}")
+    @RequestMapping("categorie/update/{id}")
     public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
         Categorie categorie = categorieService.getByIdCategorie(id);
         model.addAttribute("categorieForm", categorie);
-        return "/categorie/addUpdateCategorie";
+        return "categorie/addUpdateCategorie";
     }
     
-    @RequestMapping(value = "/categorie/delete/{id}")
+    @RequestMapping(value = "categorie/delete/{id}")
     public String delete(@PathVariable Long id, final RedirectAttributes redirectAttributes) throws Exception {
         categorieService.deleteCategorie(id);
         
         redirectAttributes.addFlashAttribute("typeAlert", "delete");
     	redirectAttributes.addFlashAttribute("msgAlert", "Categorie dont ID : "+id+" a été supprimé.");
     	
-        return "redirect:/categorie/listAll";
+        return "redirect:categorie/listAll";
     }
     
-    @RequestMapping(value = "/categorie/clear")
+    @RequestMapping(value = "categorie/clear")
     public String deleteAll() throws Exception {
     	List<Categorie> listeCategories = categorieService.getAll();
     	for (Categorie categorie : listeCategories) {	
 	    	categorieService.deleteCategorie(categorie.getIdCateg());
 		}
     	
-        return "redirect:/categorie/listAll";
+        return "redirect:categorie/listAll";
     }
     
     

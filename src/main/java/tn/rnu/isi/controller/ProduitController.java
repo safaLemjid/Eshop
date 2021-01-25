@@ -38,7 +38,7 @@ public class ProduitController {
  
  
 
-@RequestMapping(value = "/produit/listAll", method = RequestMethod.GET)
+@RequestMapping(value = "produit/listAll", method = RequestMethod.GET)
 
 	protected ModelAndView showAllProduits() throws Exception {
 		/*
@@ -52,21 +52,21 @@ public class ProduitController {
 		return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
 	}
 
-	 	@RequestMapping(value = "/produit/list", method = RequestMethod.GET)
+	 	@RequestMapping(value = "produit/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("produits", produitService.getAll());
-	        return "/produit/showAllProduits"; // Afficher la page showAllProduits.html qui se trouve sous /produit
+	        return "produit/showAllProduits"; // Afficher la page showAllProduits.html qui se trouve sous /produit
 	        
 	    }
 
-	    @RequestMapping(value = "/produit/get/{id}" , method = RequestMethod.GET)
+	    @RequestMapping(value = "produit/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("produitToShow", produitService.getByIdProduit(id));
-	        return "/produit/showProduit"; // Afficher la page showProduit.html qui se trouve sous /produit
+	        return "produit/showProduit"; // Afficher la page showProduit.html qui se trouve sous /produit
 	    }
 	    
 	    
-	    @RequestMapping(value = "/produit/save", method = RequestMethod.POST)
+	    @RequestMapping(value = "produit/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("produitForm") Produit produit, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	    	try {
 				
@@ -96,20 +96,20 @@ public class ProduitController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
 	    
 	    
 
  
-	    @RequestMapping("/produit/update/{id}")
+	    @RequestMapping("produit/update/{id}")
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Produit produit = produitService.getByIdProduit(id);
 	        model.addAttribute("produitForm", produit);
-	        return "/produit/addUpdateProduit";
+	        return "produit/addUpdateProduit";
 	    }
 	    
-	    @RequestMapping(value = "/produit/delete/{id}")
+	    @RequestMapping(value = "produit/delete/{id}")
 	    public String delete(@PathVariable Long id, final RedirectAttributes redirectAttributes) throws Exception {
 	    	commandeService.deleteCommandeByIdProduit(id);
 	        produitService.deleteProduit(id);
@@ -117,10 +117,10 @@ public class ProduitController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Produit dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
 	    
-	    @RequestMapping(value = "/produit/clear")
+	    @RequestMapping(value = "produit/clear")
 	    public String deleteAll() throws Exception {
 	    	List<Produit> listeProduits = produitService.getAll();
 	    	for (Produit produit : listeProduits) {
@@ -128,7 +128,7 @@ public class ProduitController {
 		    	produitService.deleteProduit(produit.getIdProduit());
 			}
 	    	
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
  
 }
