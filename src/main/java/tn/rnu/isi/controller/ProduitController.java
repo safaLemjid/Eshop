@@ -49,7 +49,7 @@ public class ProduitController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
+		return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
 	}
 
 	 	@RequestMapping(value = "produit/list", method = RequestMethod.GET)
