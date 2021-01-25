@@ -29,7 +29,7 @@ public class ClientController {
 	
 	
 	
-	@RequestMapping(value = "client/listAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/client/listAll", method = RequestMethod.GET)
 	protected ModelAndView showAllClients() throws Exception {
 		/*
 		 * Lancement du Service et recupeation donnees en base
@@ -48,13 +48,13 @@ public class ClientController {
         return "client/showAllClients";         
     }
 
-    @RequestMapping(value = "client/get/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/client/get/{id}" , method = RequestMethod.GET)
     public String get(@PathVariable Long id, Model model) throws Exception {
         model.addAttribute("clientToShow", clientService.getByIdClient(id));
         return "client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
     }
     
-    @RequestMapping(value = "client/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/client/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("clientForm") Client client, Model model, final RedirectAttributes redirectAttributes) throws Exception {
     	try {
 			
@@ -84,35 +84,35 @@ public class ClientController {
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
-        return "redirect:client/listAll";
+        return "redirect:/client/listAll";
     }
     
     
-    @RequestMapping("client/update/{id}")
+    @RequestMapping("/client/update/{id}")
     public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
         Client client = clientService.getByIdClient(id);
         model.addAttribute("clientForm", client);
         return "client/addUpdateClient";
     }
     
-    @RequestMapping(value = "client/delete/{id}")
+    @RequestMapping(value = "/client/delete/{id}")
     public String delete(@PathVariable Long id, final RedirectAttributes redirectAttributes) throws Exception {
         clientService.deleteClient(id);
         
         redirectAttributes.addFlashAttribute("typeAlert", "delete");
     	redirectAttributes.addFlashAttribute("msgAlert", "Client dont ID : "+id+" a été supprimé.");
     	
-        return "redirect:client/listAll";
+        return "redirect:/client/listAll";
     }
     
-    @RequestMapping(value = "client/clear")
+    @RequestMapping(value = "/client/clear")
     public String deleteAll() throws Exception {
     	List<Client> listeClients = clientService.getAll();
     	for (Client client : listeClients) {	
 	    	clientService.deleteClient(client.getIdClient());
 		}
     	
-        return "redirect:client/listAll";
+        return "redirect:/client/listAll";
     }
     
 
