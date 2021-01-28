@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import tn.rnu.isi.model.Client;
-import tn.rnu.isi.model.Produit;
 import tn.rnu.isi.service.ClientService;
 
 @Controller("clientController")
@@ -54,29 +53,28 @@ public class ClientController {
         model.addAttribute("clientToShow", clientService.getByIdClient(id));
         return "client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
     }
-
-
+    
     @RequestMapping(value = "client/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("clientForm") Client client, Model model, final RedirectAttributes redirectAttributes) throws Exception {
     	try {
-    		
-    		Long idClient = clientService.save(client);
-    		
+			
+    		Long idClient= clientService.save(client);
+    		 
     		if(client.getIdClient()!=null){
-   
-     			 
+    			
 				redirectAttributes.addFlashAttribute("typeAlert", "update");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Client dont ID : "+client.getIdClient()+" a été mis à jour.");
-		    
-			}else{
-			
-			
+		    	
+		     
+		     
+			}else {
 				
 				redirectAttributes.addFlashAttribute("typeAlert", "new");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Nouveau Client a été enregsitrée avec ID : "+idClient);
 			}
     		
-   
+	
+    	
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
