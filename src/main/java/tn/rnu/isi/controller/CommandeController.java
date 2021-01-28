@@ -58,7 +58,7 @@ public class CommandeController {
 	    }
 	    
 	    
-	    @RequestMapping(value = "/commande/save", method = RequestMethod.POST)
+	    @RequestMapping(value = "commande/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("commandeForm") Commande commande, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	    	try {
 				

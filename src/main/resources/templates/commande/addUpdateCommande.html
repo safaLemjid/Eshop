@@ -96,14 +96,12 @@
 												data-validation-error-msg-number="Champs Quantité doit étre numérique entier ne dépassant pas la valeur 100000 " />
 										</div>
 
-										<div class="form-group">
-											<input type="date" th:field="*{dateCommande}" 
-											    class="form-control" th:value="${commandeForm.dateCommande}" 
-											    placeholder="Date"	required="required" 
-												data-validation-error-msg-required="Champs Date est Obligatoire !"
-												data-validation-error-msg-number="Champs Date  doit étre forme datel" />
+									    <div class="form-group">
+											<input type="text" th:field="*{dateCommande}"
+											 class="form-control getdate"
+       									     placeholder="Date From"
+      								         th:value="${#dates.format(commandeForm.dateCommande, 'dd/mm/yyyy')}"/>
 										</div>
-
 										
 
 										<div class="form-group">
