@@ -67,6 +67,7 @@ public class CommandeController {
 
 	    	
 	    	if(  commande.getIdCommande()!=null){
+	    		
 				redirectAttributes.addFlashAttribute("typeAlert", "info");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Commande dont ID : "+commande.getIdCommande()+" a été mise à jour.");
 

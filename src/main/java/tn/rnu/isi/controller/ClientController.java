@@ -59,15 +59,16 @@ public class ClientController {
     @RequestMapping(value = "/client/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("clientForm") Client client, Model model, final RedirectAttributes redirectAttributes) throws Exception {
     	try {
-    		Long idClient= clientService.save(client);
+    		
+    		
 		
     		if(client.getIdClient()!=null){
-    		
-    			 clientService.save(client);
+     			 
 				redirectAttributes.addFlashAttribute("typeAlert", "update");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Client dont ID : "+client.getIdClient()+" a été mis à jour.");
 		    
 			}else{
+				Long idClient= clientService.save(client);
 				
 				redirectAttributes.addFlashAttribute("typeAlert", "new");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Nouveau Client a été enregsitrée avec ID : "+idClient);
