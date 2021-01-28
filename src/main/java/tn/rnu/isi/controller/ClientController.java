@@ -43,33 +43,34 @@ public class ClientController {
 		return new ModelAndView("client/showAllClients", "clients", listeClients);
 	}
 	
-	@RequestMapping(value = "client/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/client/list", method = RequestMethod.GET)
     public String list(Model model) throws Exception {
         model.addAttribute("clients", clientService.getAll());
         return "client/showAllClients";         
     }
 
-    @RequestMapping(value = "/client/get/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "client/get/{id}" , method = RequestMethod.GET)
     public String get(@PathVariable Long id, Model model) throws Exception {
         model.addAttribute("clientToShow", clientService.getByIdClient(id));
         return "client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
     }
 
 
-    @RequestMapping(value = "/client/save", method = RequestMethod.POST)
+    @RequestMapping(value = "client/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("clientForm") Client client, Model model, final RedirectAttributes redirectAttributes) throws Exception {
     	try {
     		
-		
+    		Long idClient = clientService.save(client);
+    		
     		if(client.getIdClient()!=null){
-    			clientService.save(client);
+   
      			 
 				redirectAttributes.addFlashAttribute("typeAlert", "update");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Client dont ID : "+client.getIdClient()+" a été mis à jour.");
 		    
 			}else{
 			
-				Long idClient = clientService.save(client);
+			
 				
 				redirectAttributes.addFlashAttribute("typeAlert", "new");
 		    	redirectAttributes.addFlashAttribute("msgAlert", "Nouveau Client a été enregsitrée avec ID : "+idClient);
@@ -83,7 +84,7 @@ public class ClientController {
     }
     
     
-    @RequestMapping("/client/update/{id}")
+    @RequestMapping("client/update/{id}")
     public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
         Client client = clientService.getByIdClient(id);
         model.addAttribute("clientForm", client);
